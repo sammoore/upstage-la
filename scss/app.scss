@@ -1,6 +1,74 @@
 @import "settings";
 @import "foundation";
 
+$font-stack:    Helvetica, sans-serif;
+
+/*
+ * based on _settings.scss, we force Foundation to only use small and medium.
+ * therefore, the width will be constrained to 1024px on the largest viewports.
+ */
+
+.container {
+    @include grid-row($behavior: false);
+    
+    height: 768px;
+    margin: 0 auto;
+}
+
+.navbar {
+    $nav-height: 50px;
+    
+    $nav-background: rgb(83, 88, 95);
+    $item-hover-color: lighten($nav-background, 10%);
+    $nav-font-color: white;
+    $nav-font-size: 16px;
+    
+    @include grid-column(
+        // Control the number of columns
+        $columns:12,
+        // Specify whether or not this is the last column in the row
+        $last-column:true,
+        // Choose whether or not to center this column
+        $center:true,
+        // Choose the number of columns to offset this element by
+        $offset:0,
+        // Specify how many columns to push this element past
+        $push:0,
+        // Specify how many columns to pull this element past
+        $pull:0,
+        // Set to true to remove column padding
+        $collapse:true,
+        // Specify the float direction
+        $float:right
+    );
+    
+    height: $nav-height;
+    margin-top: 32px;
+    
+    background-color: $nav-background;
+    color: $nav-font-color;
+    
+    font: rem-calc($nav-font-size) $font-stack;
+    letter-spacing: 3px;
+    
+    .item {
+        @include grid-column($columns: 2, $float: left);
+        
+        padding: ($nav-height - $nav-font-size) / 2 0;
+        
+        text-align: center;
+        text-transform: uppercase;
+    }
+    
+    .item:hover {
+        background-color: $item-hover-color;
+    }
+    
+    .item:first-child {
+        @include grid-column($offset: 4);
+    }
+}
+
 // Or selectively include components
 // @import
 //   "foundation/components/accordion",

@@ -2,7 +2,8 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-//
+// Sam Moore
+// Changes marked "[MODIFIED]"
 
 // Table of Contents
 // Foundation Settings
@@ -152,6 +153,15 @@ $include-html-global-classes: $include-html-classes;
 
 // d. Media Query Ranges
 // - - - - - - - - - - - - - - - - - - - - - - - - -
+
+// [MODIFIED]
+// override values so medium, i.e. 1024px width for the grid, is always the max.
+$small-range: (0em, 40em);
+$medium-range: (40.063em, 99999999em);
+$large-range: (99999999.1em, 99999999.2em);
+$xlarge-range: ( 99999999.3em, 99999999.4em);
+$xxlarge-range: ( 99999999.5em, 99999999.6em);
+
 
 // $small-range: (0em, 40em);
 // $medium-range: (40.063em, 64em);
