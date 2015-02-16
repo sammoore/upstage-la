@@ -133,6 +133,43 @@ $nav-font-size: 16px;
     }
 }
 
+.order {
+    @include grid-row();
+    
+    margin-top: rem-calc(20px);
+    text-align: right;
+    
+    .content {
+        @include grid-column(
+            // Control the number of columns
+            $columns:5,
+            // Specify whether or not this is the last column in the row
+            $last-column:true,
+            // Choose whether or not to center this column
+            $center:true,
+            // Choose the number of columns to offset this element by
+            $offset:6,
+            // Specify how many columns to push this element past
+            $push:0,
+            // Specify how many columns to pull this element past
+            $pull:0,
+            // Set to true to remove column padding
+            $collapse:true,
+            // Specify the float direction
+            $float:right
+        );
+    
+        h2 {
+//            text-align: right;
+            font: rem-calc(16px) $font-stack;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: white;
+        }
+    }
+}
+
 // Or selectively include components
 // @import
 //   "foundation/components/accordion",
