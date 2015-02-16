@@ -1,7 +1,17 @@
 @import "settings";
 @import "foundation";
 
+$width: 1000px;
+$height: 768px;
+
 $font-stack:    Helvetica, sans-serif;
+
+$nav-height: 50px;
+
+$nav-background: rgb(83, 88, 95);
+$item-hover-color: lighten($nav-background, 10%);
+$nav-font-color: white;
+$nav-font-size: 16px;
 
 /*
  * based on _settings.scss, we force Foundation to only use small and medium.
@@ -11,63 +21,118 @@ $font-stack:    Helvetica, sans-serif;
 .container {
     @include grid-row($behavior: false);
     
-    height: 768px;
+    height: $height;
     margin: 0 auto;
+    
+    background-image: url("../img/girl.png");
+    
+    .bar {
+        @include grid-column(
+            // Control the number of columns
+            $columns:12,
+            // Specify whether or not this is the last column in the row
+            $last-column:true,
+            // Choose whether or not to center this column
+            $center:true,
+            // Choose the number of columns to offset this element by
+            $offset:0,
+            // Specify how many columns to push this element past
+            $push:0,
+            // Specify how many columns to pull this element past
+            $pull:0,
+            // Set to true to remove column padding
+            $collapse:true,
+            // Specify the float direction
+            $float:right
+        );
+    
+        height: $nav-height;
+        margin-top: 32px;
+    
+        background-color: $nav-background;
+        color: $nav-font-color;
+    
+        font: rem-calc($nav-font-size) $font-stack;
+        letter-spacing: 3px;
+    }
+    
+    .navbar {
+        @extend .bar;
+        
+        .item {
+            @include grid-column($columns: 2, $float: left);
+    
+            padding: ($nav-height - $nav-font-size) / 2 0;
+    
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .item:hover {
+            background-color: $item-hover-color;
+        }
+
+        .item:first-child {
+            @include grid-column($offset: 4);
+        }
+    }
+    
+    .content-container {
+        .social {
+            @extend .bar;
+            background-color: transparent;
+            padding-left: 5px;
+            
+            img {
+                $social-icon-size: 40px;
+                
+                width: $social-icon-size;
+                height: $social-icon-size;
+                
+                margin: ($nav-height - $social-icon-size) / 2 5px;
+            }
+        }
+        
+        position: absolute;
+        z-index: 2;
+        
+        top: 0;
+        
+        width: $width;
+        height: $height;
+        
+        background-image: url("../img/cardstock.png");
+    
+        .cardstock {
+            content: " ";
+            position: relative;
+            background-color: transparent;
+        }
+        
+        .logo {
+            margin: 350px 50px;
+            
+            h2 {
+                text-transform: uppercase;
+                color: $nav-background;
+                font: rem-calc(20px) $font-stack;
+                font-weight: bold;
+                letter-spacing: 10px;
+                margin-bottom: rem-calc(40);
+            }
+        }
+    }
+    
+    .content-container::before {
+        content: " ";
+        
+        width: 1000px;
+        height: 768px;
+        
+        overflow: visible;
+    }
 }
 
-.navbar {
-    $nav-height: 50px;
-    
-    $nav-background: rgb(83, 88, 95);
-    $item-hover-color: lighten($nav-background, 10%);
-    $nav-font-color: white;
-    $nav-font-size: 16px;
-    
-    @include grid-column(
-        // Control the number of columns
-        $columns:12,
-        // Specify whether or not this is the last column in the row
-        $last-column:true,
-        // Choose whether or not to center this column
-        $center:true,
-        // Choose the number of columns to offset this element by
-        $offset:0,
-        // Specify how many columns to push this element past
-        $push:0,
-        // Specify how many columns to pull this element past
-        $pull:0,
-        // Set to true to remove column padding
-        $collapse:true,
-        // Specify the float direction
-        $float:right
-    );
-    
-    height: $nav-height;
-    margin-top: 32px;
-    
-    background-color: $nav-background;
-    color: $nav-font-color;
-    
-    font: rem-calc($nav-font-size) $font-stack;
-    letter-spacing: 3px;
-    
-    .item {
-        @include grid-column($columns: 2, $float: left);
-        
-        padding: ($nav-height - $nav-font-size) / 2 0;
-        
-        text-align: center;
-        text-transform: uppercase;
-    }
-    
-    .item:hover {
-        background-color: $item-hover-color;
-    }
-    
-    .item:first-child {
-        @include grid-column($offset: 4);
-    }
-}
 
 // Or selectively include components
 // @import
