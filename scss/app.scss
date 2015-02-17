@@ -97,6 +97,10 @@ body {
     .right-items > a {
         @include grid-column($column-width, $float: left, $collapse: true);
         
+        &:first-child {
+            @include grid-column($offset: $left-gutter);
+        }
+        
         height: $nav-height;
         padding: rem-calc($nav-height - $nav-font-size) / 2 0;
         
@@ -113,8 +117,11 @@ body {
     }
     
     .social {
-        @include grid_column(12 - ($item-count * $column-width), $last_column: true);
-        @include translucent-background-medium();
+        @include grid_column(12 - ($item-count * $column-width) - $left-gutter, $last_column: true);
+        
+        img {
+            background-color: rgba(255, 255, 255, 0.80);
+        }
         
         $icon-size: 40px;
         
@@ -131,7 +138,7 @@ body {
             text-align: center;
         }
         
-        @media #{$xlarge-up} {
+        @media #{$large-up} {
             @include grid_column(12 - ($item-count * $column-width) - $left-gutter);
             text-align: center;
             margin: 0;
