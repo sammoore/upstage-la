@@ -126,7 +126,7 @@ body {
     }
 }
 
-.head, .content {
+.head, .container {
     @include responsive_row_additions();
     padding-top: $nav-margin;
     margin: 0 auto;
@@ -140,23 +140,17 @@ body {
 //    }
 
 .container {
-    @include responsive_row_additions();
-    
-    .content {
-        @include grid-column(12);
+
+    .crow {
+        @include grid-row($behavior: collapse);
+        
+        margin-top: rem-calc(20);
+        
+        .content {
+            @include grid-column(10, $last-column: true, $offset: 1, $collapse: true);
+        }
+
     }
-    
-//    @include before-or-after();
-//
-//    .bar {
-//        @include disable-background-events();
-//    }
-//
-//    z-index: 2;
-//
-//    .content {
-//        @include grid-row();
-//    }
     
 }
 

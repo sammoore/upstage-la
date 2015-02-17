@@ -9,6 +9,24 @@
     
     <style type="text/css">
     
+    a.book-button {
+      display: block;
+      margin: 10px 0;
+      
+      background: transparent url("img/Button 1.0 alpha.png") top left no-repeat;
+      width: 377px;
+      height: 74px;
+      
+      /* Hide the text */
+      text-indent: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    
+    a.book-button:hover {
+      background-image: url("img/Button .65 alpha.png");
+    }
+    
     </style>
   </head>
   <body>
@@ -43,16 +61,14 @@
     </div>
     
     <div class="container">
-      <div class="row">
+      <div class="crow">
         <div class="content">
           <p>
             <img src="img/Info Txt Page 1.png" />
           </p>
-          <p>
-            <a href="#">
-              <img src="img/Button 1.0 alpha.png" />
-            </a>
-          </p>
+          <a class="book-button" href="#">
+            Book Tickets
+          </a>
           <p>
             <img src="img/Logo page 1.png" />
           </p>
