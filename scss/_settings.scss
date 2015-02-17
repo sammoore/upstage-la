@@ -156,18 +156,18 @@ $include-html-global-classes: $include-html-classes;
 
 // [MODIFIED]
 // override values so medium, i.e. 1024px width for the grid, is always the max.
-$small-range: (0em, 40em);
 
 //$medium-range: (40.063em, 99999999em);
 //$large-range: (99999999.1em, 99999999.2em);
 //$xlarge-range: ( 99999999.3em, 99999999.4em);
 //$xxlarge-range: ( 99999999.5em, 99999999.6em);
 
-$small-range: (0em, 40em);
-$medium-range: (40.063em, 64em);
+//$small-range: (0em, 40em);
+$small-range: (1000em, 1100em);
+$medium-range: (0em, 64em);
 $large-range: (64.063em, 67.437em);
 $xlarge-range: (90em, 999em);
-$xxlarge-range: (999.063em, 99999999em);
+$xxlarge-range: (999.063em, 1000em);
 
 // $small-range: (0em, 40em);
 // $medium-range: (40.063em, 64em);

@@ -40,7 +40,7 @@ h2 {
 @mixin responsive_row_additions() {
 
     // default: 641px
-    width: lower_bound($small-range);
+    width: lower_bound($large-range);
     
     // 1000px
     @media #{$large-up} {
@@ -73,6 +73,12 @@ h2 {
     background-repeat: no-repeat; 
 }
 
+@mixin translucent-background-medium() {
+    @media #{$medium-only} {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+}
+
 .bar {
     @include grid_row($behavior: nest-collapse);
     @include responsive_row_additions();
@@ -103,6 +109,7 @@ h2 {
     
     .social {
         @include grid_column(12 - ($item-count * $column-width), $last_column: true);
+        @include translucent-background-medium();
         
         $icon-size: 40px;
         
@@ -113,6 +120,10 @@ h2 {
         li {
             list-style: none;
             float: left;
+        }
+        
+        @media #{$medium-only} {
+            text-align: center;
         }
         
         @media #{$xlarge-up} {
@@ -147,6 +158,7 @@ h2 {
 
     .crow {
         @include grid-row($behavior: collapse);
+        @include translucent-background-medium();
         
         margin-top: rem-calc(20);
         
