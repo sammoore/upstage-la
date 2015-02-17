@@ -19,10 +19,6 @@ $item-hover-color: lighten($nav-background, 10%);
 $nav-font-color: white;
 $nav-font-size: 16px;
 
-body {
-    background: transparent url("../img/Paper Back Page 1.png") top center no-repeat;
-}
-
 @mixin disable_background_events() {
     pointer-events: none;
     
