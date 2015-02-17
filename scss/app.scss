@@ -18,6 +18,15 @@ $nav-background: rgba(100, 100, 100, 0);
 $item-hover-color: lighten($nav-background, 10%);
 $nav-font-color: white;
 $nav-font-size: 16px;
+$header-font-size: 24px;
+
+h2 {
+    margin: 30px 0;
+    font: rem-calc($header-font-size) "Helvetica Neue", $font-stack;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: rem-calc(4);
+}
 
 @mixin disable_background_events() {
     pointer-events: none;
@@ -100,6 +109,11 @@ $nav-font-size: 16px;
         padding: ($nav-height - $icon-size) / 2 0;
         margin: 50px -15px;
         
+        li {
+            list-style: none;
+            float: left;
+        }
+        
         @media #{$xlarge-up} {
             @include grid_column(12 - ($item-count * $column-width) - $left-gutter);
             text-align: center;
@@ -127,13 +141,6 @@ $nav-font-size: 16px;
     padding-top: $nav-margin;
     margin: 0 auto;
 }
-    
-//    &::after {
-//        @include before-or-after();
-//
-//        background-image: url("../img/rough-beige-paper-texture.png");
-//        z-index: -1;
-//    }
 
 .container {
 
@@ -143,7 +150,9 @@ $nav-font-size: 16px;
         margin-top: rem-calc(20);
         
         .content {
-            @include grid-column(10, $last-column: true, $collapse: true);
+            @include grid-column(8, $last-column: true, $collapse: true);
+            
+            letter-spacing: rem-calc(2);
             
             @media #{$xlarge-up} {
                 @include grid-column($offset: 1);
@@ -189,6 +198,22 @@ $nav-font-size: 16px;
             color: white;
         }
     }
+}
+
+.logo {
+    display: block;
+    margin: 10px 0;
+
+    background: transparent url("../img/Logo page 1.png") top left no-repeat;
+    background-size: contain;
+    // size / 1.5
+    width: 399px;
+    height: 184px;
+
+    /* Hide the text */
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 // Or selectively include components
