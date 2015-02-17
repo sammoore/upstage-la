@@ -1,5 +1,8 @@
-@import "settings";
-@import "foundation";
+@import "settings", "foundation";
+
+/*
+ * Defaults
+ */
 
 $width: 1000px;
 $height: 768px;
@@ -7,6 +10,10 @@ $height: 768px;
 $font-stack:    Helvetica, sans-serif;
 
 $nav-height: 50px;
+
+// TODO: make this better
+// gets converted into padding to support background. 
+$nav-margin: 32px;
 
 $nav-background: rgb(83, 88, 95);
 $item-hover-color: lighten($nav-background, 10%);
@@ -18,13 +25,31 @@ $nav-font-size: 16px;
  * therefore, the width will be constrained to 1024px on the largest viewports.
  */
 
+.cardstock-foreground {
+    &:before {
+        content: "";
+        
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        
+        width: $width;
+        height: $height;
+        background-image: url("../img/cardstock.png");
+        
+        pointer-events: none;
+    }
+}
+
 .container {
     @include grid-row($behavior: false);
     
     height: $height;
+    padding: rem-calc($nav-margin) 0;
     margin: 0 auto;
     
     background-image: url("../img/girl.png");
+    @extend .cardstock-foreground;
     
     .bar {
         @include grid-column(
@@ -47,7 +72,6 @@ $nav-font-size: 16px;
         );
     
         height: $nav-height;
-        margin-top: 32px;
     
         background-color: $nav-background;
         color: $nav-font-color;
@@ -78,35 +102,18 @@ $nav-font-size: 16px;
     }
     
     .content-container {
-        .social {
-            @extend .bar;
-            background-color: transparent;
-            padding-left: 10px;
-            
-            img {
-                $social-icon-size: 40px;
-                
-                width: $social-icon-size;
-                height: $social-icon-size;
-                
-                margin: ($nav-height - $social-icon-size) / 2 5px;
-            }
-        }
-        
         position: absolute;
-        z-index: 2;
-        
         top: 0;
+        z-index: 10;
         
         width: $width;
         height: $height;
+        padding: rem-calc(32px) 0;
         
-        background-image: url("../img/cardstock.png");
-    
-        .cardstock {
-            content: " ";
-            position: relative;
-            background-color: transparent;
+        pointer-events: none;
+        
+        * {
+            pointer-events: auto;
         }
         
         .logo {
@@ -121,15 +128,27 @@ $nav-font-size: 16px;
                 margin-bottom: rem-calc(40);
             }
         }
-    }
-    
-    .content-container::before {
-        content: " ";
         
-        width: 1000px;
-        height: 768px;
-        
-        overflow: visible;
+        .social {
+            @extend .bar;
+            background-color: transparent;
+            padding-left: 10px;
+            
+            pointer-events: none;
+            
+            * {
+                pointer-events: auto;
+            }
+            
+            img {
+                $social-icon-size: 40px;
+                
+                width: $social-icon-size;
+                height: $social-icon-size;
+                
+                margin: ($nav-height - $social-icon-size) / 2 5px;
+            }
+        }
     }
 }
 
@@ -159,12 +178,20 @@ $nav-font-size: 16px;
             $float:right
         );
     
-        h2 {
-//            text-align: right;
+        .fonts {
             font: rem-calc(16px) $font-stack;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 4px;
+        }
+        
+        a {
+            @extend .fonts;
+            color: black;
+        }
+        
+        h2 {
+            @extend .fonts;
             color: white;
         }
     }
@@ -172,38 +199,5 @@ $nav-font-size: 16px;
 
 // Or selectively include components
 // @import
-//   "foundation/components/accordion",
-//   "foundation/components/alert-boxes",
-//   "foundation/components/block-grid",
-//   "foundation/components/breadcrumbs",
-//   "foundation/components/button-groups",
-//   "foundation/components/buttons",
-//   "foundation/components/clearing",
-//   "foundation/components/dropdown",
-//   "foundation/components/dropdown-buttons",
-//   "foundation/components/flex-video",
-//   "foundation/components/forms",
-//   "foundation/components/grid",
-//   "foundation/components/inline-lists",
-//   "foundation/components/joyride",
-//   "foundation/components/keystrokes",
-//   "foundation/components/labels",
-//   "foundation/components/magellan",
-//   "foundation/components/orbit",
-//   "foundation/components/pagination",
-//   "foundation/components/panels",
-//   "foundation/components/pricing-tables",
-//   "foundation/components/progress-bars",
-//   "foundation/components/reveal",
-//   "foundation/components/side-nav",
-//   "foundation/components/split-buttons",
-//   "foundation/components/sub-nav",
-//   "foundation/components/switches",
-//   "foundation/components/tables",
-//   "foundation/components/tabs",
-//   "foundation/components/thumbs",
-//   "foundation/components/tooltips",
-//   "foundation/components/top-bar",
-//   "foundation/components/type",
-//   "foundation/components/offcanvas",
-//   "foundation/components/visibility";
+//   "foundation/components/xyz",
+//   "foundation/components/abc"
