@@ -258,7 +258,11 @@ h2 {
 }
 
 .all-caps {
-    letter-spacing: rem-calc(3);
+    text-transform: uppercase;
+}
+
+.extra-padding {
+    padding: 5px 0;
 }
 
 // Or selectively include components
