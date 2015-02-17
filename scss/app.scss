@@ -75,22 +75,26 @@ $nav-font-size: 16px;
     
         background-color: $nav-background;
         color: $nav-font-color;
-    
+        
+        a, a:visited, a:hover {
+            color: $nav-font-color;
+        }
+        
         font: rem-calc($nav-font-size) $font-stack;
         font-weight: normal;
         letter-spacing: 3px;
         text-transform: uppercase;
+        
     }
     
     .navbar {
         @extend .bar;
         
-        width: $width;
-        
-        .item {
-            @include grid-column($columns: 2, $float: left);
+        a {
+            display: block;
             
-            width: 13.82%;
+            @include grid-column($columns: 2, $float: left);
+            width: grid-calc(1.66, 12);
             padding: ($nav-height - $nav-font-size) / 2 0;
 
             text-align: center;
@@ -185,7 +189,7 @@ $nav-font-size: 16px;
     
         .fonts {
             font: rem-calc(16px) $font-stack;
-            font-weight: 600;
+            font-weight: 5;
             text-transform: uppercase;
             letter-spacing: 4px;
         }
