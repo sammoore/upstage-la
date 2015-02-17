@@ -8,52 +8,78 @@
     <script src="bower_components/modernizr/modernizr.js"></script>
     
     <style type="text/css">
+    
+    body {
+        background: transparent url("img/Paper Back Page 3.png") top center no-repeat;
+    }
+    
+    a.book-button {
+      display: block;
+      margin: 10px 0;
       
-    .container {
-      background-image: url("img/girl.png");
+      background: transparent url("img/Button 1.0 alpha.png") top left no-repeat;
+      width: 377px;
+      height: 74px;
+      
+      /* Hide the text */
+      text-indent: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    
+    a.book-button:hover {
+      background-image: url("img/Button .65 alpha.png");
     }
     
     </style>
   </head>
   <body>
-    <div class="container">
-      <div class="navbar">
-          <a href="index.html" class="item">
-            Home
-          </a>
-          <a href="about.html" class="item">
-            About
-          </a>
-          <a href="#" class="item">
-            Events
-          </a>
-          <a href="%" class="item">
-            Community
-          </a>
-          <a href="%" class="item">
-            Sponsors
-          </a>
-      </div>
-      
-      <div class="right-side">
-        <!-- content? -->
-      </div>
-      
-      <div class="content-container">
-        <div class="social">
-          <img src="img/icon_twitter-sign_bw.png" />
-          <img src="img/icon_facebook-sign_bw.png" />
-          <img src="img/icon_instagram-sign_bw.png" />
-          <img src="img/icon_youtube-sign_bw.png" />
-        </div>
-        
-        <div class="logo">
-          <h2>Digital Media & Technology</h2>
-          <img src="img/logo.png" />
+    <div class="head">
+      <div class="bar">
+        <div class="nav">
+          <div class="social">
+            <img src="img/icon_twitter-sign_bw.png" />
+            <img src="img/icon_facebook-sign_bw.png" />
+            <img src="img/icon_instagram-sign_bw.png" />
+            <img src="img/icon_youtube-sign_bw.png" />
+          </div>
+          <div class="right-items">
+            <a href="index.html">
+              Home
+            </a>
+            <a href="about.html">
+              About
+            </a>
+            <a href="#">
+              Events
+            </a>
+            <a href="community.html">
+              Community
+            </a>
+            <a href="sponsors.html">
+              Sponsors
+            </a>
+          </div>
         </div>
       </div>
     </div>
-
+    
+    <div class="container">
+      <div class="crow">
+        <div class="content">
+          <p>
+            <img src="img/Info Txt Page 1.png" />
+          </p>
+          <a class="book-button" href="#">
+            Book Tickets
+          </a>
+          <p>
+            <img src="img/Logo page 1.png" />
+          </p>
+        </div>
+      </div>
+    </div>
+    
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/foundation/js/foundation.min.js"></script>
     <script src="js/app.js"></script>
