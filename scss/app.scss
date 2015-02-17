@@ -4,186 +4,178 @@
  * Defaults
  */
 
-$width: 1000px;
 $height: 768px;
 
-$font-stack:    Helvetica, sans-serif;
+$font-stack: Helvetica, sans-serif;
 
 $nav-height: 50px;
 
 // TODO: make this better
 // gets converted into padding to support background. 
-$nav-margin: 32px;
+$nav-margin: 56px;
 
-$nav-background: rgb(83, 88, 95);
+$nav-background: rgba(100, 100, 100, 0);
 $item-hover-color: lighten($nav-background, 10%);
 $nav-font-color: white;
 $nav-font-size: 16px;
 
-/*
- * based on _settings.scss, we force Foundation to only use small and medium.
- * therefore, the width will be constrained to 1024px on the largest viewports.
- */
+body {
+    background: transparent url("../img/Paper Back Page 1.png") top center no-repeat;
+}
 
-.cardstock-foreground {
-    &:before {
-        content: "";
-        
-        position: absolute;
-        top: 0;
-        z-index: 2;
-        
-        width: $width;
-        height: $height;
-        background-image: url("../img/cardstock.png");
-        
-        pointer-events: none;
+@mixin disable_background_events() {
+    pointer-events: none;
+    
+    * {
+        pointer-events: auto;
     }
 }
+
+@mixin responsive_row_additions() {
+
+    // default: 641px
+    width: lower_bound($small-range);
+    
+    // 1000px
+    @media #{$large-up} {
+        width: lower_bound($large-range);
+    }
+    
+    @media #{$xlarge-up} {
+        width: lower_bound($xlarge-range);
+    }
+}
+
+@mixin before-or-after() {
+    @include disable-background-events();
+    @include responsive_row_additions();
+    
+    // to center background accordingly
+    $before-after-background-width: 1024px;
+    
+    content: "";
+    
+    position: absolute;
+    
+    top: 0;
+    left: 50%;
+    margin-left: -50%;
+    
+    height: 100%;
+    width: 100%;
+    
+    background-repeat: no-repeat; 
+}
+
+.bar {
+    @include grid_row($behavior: nest-collapse);
+    @include responsive_row_additions();
+    
+    height: $nav-height;
+
+    $item-count: 5;
+    $column-width: 1.5;
+    $left-gutter: 1.5;
+
+    .right-items > a {
+        @include grid-column($column-width, $float: left, $collapse: true);
+        
+        height: $nav-height;
+        padding: rem-calc($nav-height - $nav-font-size) / 2 0;
+        
+        color: white;
+        font: rem-calc($nav-font-size) $font-stack;
+        letter-spacing: rem-calc(3);
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: 100;
+        
+        &:hover {
+            color: red;
+        }
+    }
+    
+    .social {
+        @include grid_column(12 - ($item-count * $column-width), $last_column: true);
+        
+        $icon-size: 40px;
+        
+        text-align: left;
+        padding: ($nav-height - $icon-size) / 2 0;
+        margin: 50px -15px;
+        
+        @media #{$xlarge-up} {
+            @include grid_column(12 - ($item-count * $column-width) - $left-gutter);
+            text-align: center;
+            margin: 0;
+        }
+        
+        img {
+            width: $icon-size;
+            height: $icon-size;
+            
+            margin: 0 5px;
+        }
+    }
+
+    .nav {
+        @include grid-column(12, $last_column: true, $collapse: true);
+        
+        width: 100%;
+        background-color: $nav-background;
+    }
+}
+
+.head, .content {
+    @include responsive_row_additions();
+    padding-top: $nav-margin;
+    margin: 0 auto;
+}
+    
+//    &::after {
+//        @include before-or-after();
+//
+//        background-image: url("../img/rough-beige-paper-texture.png");
+//        z-index: -1;
+//    }
 
 .container {
-    @include grid-row($behavior: false);
-    
-    height: $height;
-    padding: rem-calc($nav-margin) 0;
-    margin: 0 auto;
-    
-    @extend .cardstock-foreground;
-    
-    .bar {
-        @include grid-column(
-            // Control the number of columns
-            $columns:12,
-            // Specify whether or not this is the last column in the row
-            $last-column:true,
-            // Choose whether or not to center this column
-            $center:true,
-            // Choose the number of columns to offset this element by
-            $offset:0,
-            // Specify how many columns to push this element past
-            $push:0,
-            // Specify how many columns to pull this element past
-            $pull:0,
-            // Set to true to remove column padding
-            $collapse:true,
-            // Specify the float direction
-            $float:right
-        );
-    
-        height: $nav-height;
-    
-        background-color: $nav-background;
-        color: $nav-font-color;
-        
-        a, a:visited, a:hover {
-            color: $nav-font-color;
-        }
-        
-        font: rem-calc($nav-font-size) $font-stack;
-        font-weight: normal;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        
-    }
-    
-    .navbar {
-        @extend .bar;
-        
-        a {
-            display: block;
-            
-            @include grid-column($columns: 2, $float: left);
-            width: grid-calc(1.66, 12);
-            padding: ($nav-height - $nav-font-size) / 2 0;
-
-            text-align: center;
-        }
-
-        .item:hover {
-            background-color: $item-hover-color;
-        }
-
-        .item:first-child {
-            // TODO: LOL
-            @include grid-column($offset: 3.7);
-        }
-    }
-    
-    .content-container {
-        position: absolute;
-        top: 0;
-        z-index: 10;
-        
-        width: $width;
-        height: $height;
-        padding: rem-calc(32px) 0;
-        
-        pointer-events: none;
-        
-        * {
-            pointer-events: auto;
-        }
-        
-        .logo {
-            margin: 350px 50px;
-            
-            h2 {
-                text-transform: uppercase;
-                color: $nav-background;
-                font: rem-calc(20px) $font-stack;
-                font-weight: normal;
-                letter-spacing: 10px;
-                margin-bottom: rem-calc(40);
-            }
-        }
-        
-        .social {
-            @extend .bar;
-            background-color: transparent;
-            padding-left: 10px;
-            
-            pointer-events: none;
-            
-            * {
-                pointer-events: auto;
-            }
-            
-            img {
-                $social-icon-size: 40px;
-                
-                width: $social-icon-size;
-                height: $social-icon-size;
-                
-                margin: ($nav-height - $social-icon-size) / 2 5px;
-            }
-        }
-    }
-}
-
-.right-side, .order {
-    @include grid-row();
-    
-    margin-top: rem-calc(20px);
-    text-align: right;
+    @include responsive_row_additions();
     
     .content {
+        @include grid-column(12);
+    }
+    
+//    @include before-or-after();
+//
+//    .bar {
+//        @include disable-background-events();
+//    }
+//
+//    z-index: 2;
+//
+//    .content {
+//        @include grid-row();
+//    }
+    
+}
+
+.right-side {
+    @include grid-row();
+    
+    margin-top: 50px;
+    text-align: right;
+    
+    .order {
         @include grid-column(
             // Control the number of columns
-            $columns:5,
+            $columns:6,
             // Specify whether or not this is the last column in the row
             $last-column:true,
             // Choose whether or not to center this column
             $center:true,
             // Choose the number of columns to offset this element by
-            $offset:6,
-            // Specify how many columns to push this element past
-            $push:0,
-            // Specify how many columns to pull this element past
-            $pull:0,
-            // Set to true to remove column padding
-            $collapse:true,
-            // Specify the float direction
-            $float:right
+            $offset:6
         );
     
         .fonts {
