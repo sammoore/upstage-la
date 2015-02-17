@@ -79,6 +79,11 @@ h2 {
     }
 }
 
+body {
+    @include responsive_row_additions();
+    margin: 0 auto;
+}
+
 .bar {
     @include grid_row($behavior: nest-collapse);
     @include responsive_row_additions();
