@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation</title>
+    <title>UPStage.LA</title>
     <link rel="stylesheet" href="css/app.css" />
     <script src="bower_components/modernizr/modernizr.js"></script>
     
     <style type="text/css">
     
     body {
-        background: transparent url("img/Paper Back Page 4.png") top center no-repeat;
+        background: url("img/seamless_paper_texture.png") top left repeat;
     }
     
     a.book-button {
@@ -34,17 +34,106 @@
     </style>
   </head>
   <body>
-    <div class="head">
+    <div class="row header">
+      <div class="column small-12 bar-black">
+        <div class="row">
+          <div class="container"></div>
+          <div class="column small-9 medium-8 large-4">
+            <div class="hide-for-medium-up social-menu">
+              <button data-dropdown="drop2" aria-controls="drop2" aria-expanded="false" class="button menu dropdown">Social</a>
+              <div id="drop2" data-dropdown-content class="f-dropdown content" aria-hidden="true" tabindex="-1">
+                <ul class="social">
+                  <li><a href="http://twitter.com/UpStage_LA"><img src="img/icon_twitter-sign_bw.png" /> <!-- @UPStage_LA  --></a></li>
+                  <li><a href="https://www.facebook.com/UpStageEvents"><img src="img/icon_facebook-sign_bw.png" /> <!-- Facebook --> </a></li>
+                  <li><a href="http://instagram.com/UpStage_LA"><img src="img/icon_instagram-sign_bw.png" /> <!-- Instagram --></a></li>
+                  <li><a href="https://www.youtube.com/channel/UCEzIeezRDLE9Zx9wtkOHMUA"><img src="img/icon_youtube-sign_bw.png" /> <!-- UPStage_LA --> </a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="show-for-medium-up">
+              <ul class="social">
+                <li><a href="http://twitter.com/UpStage_LA"><img src="img/icon_twitter-sign_white.png" /></a></li>
+                <li><a href="https://www.facebook.com/UpStageEvents"><img src="img/icon_facebook-sign_white.png" /></a></li>
+                <li><a href="http://instagram.com/UpStage_LA"><img src="img/icon_instagram-sign_white.png" /></a></li>
+                <li><a href="https://www.youtube.com/channel/UCEzIeezRDLE9Zx9wtkOHMUA"><img src="img/icon_youtube-sign_white.png" /></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="column small-3 medium-4 large-8">
+            <div class="hide-for-large-up">
+              <button href="#" data-dropdown="drop1" aria-controls="drop1" aria-expanded="false" class="button menu dropdown hamburger">MENU <span></span></button><br>
+              <ul id="drop1" data-dropdown-content class="f-dropdown" aria-hidden="true" tabindex="-1">
+                <li><a href="#">
+                  Home
+                </a></li>
+                <li><a href="about.html">
+                  About
+                </a></li>
+                <li><a href="events.html">
+                  Events
+                </a></li>
+                <li><a href="community.html">
+                  Community
+                </a></li>
+                <li><a href="sponsors.html">
+                  Sponsors
+                </a></li>
+              </ul>
+            </div>
+            <div class="show-for-large-up">
+              <ul class="nav">
+                <li><a href="#">
+                  Home
+                </a></li>
+                <li><a href="about.html">
+                  About
+                </a></li>
+                <li><a href="events.html">
+                  Events
+                </a></li>
+                <li><a href="community.html">
+                  Community
+                </a></li>
+                <li><a href="sponsors.html">
+                  Sponsors
+                </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row logo-row hide-for-large-up">
+      <div class="column small-6">
+        <span class="logo"></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column small-12 order">
+        <div class="content">
+          <p>
+            <img src="img/Info Txt Page 1.png" />
+          </p>
+          <a class="book-button" href="#">
+            Book Tickets
+          </a>
+          <p class="show-for-large-only">
+            <img src="img/Logo page 1.png" />
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="head">
       <div class="bar">
         <div class="nav">
-          <div class="social">
-            <img src="img/icon_twitter-sign_bw.png" />
-            <img src="img/icon_facebook-sign_bw.png" />
-            <img src="img/icon_instagram-sign_bw.png" />
-            <img src="img/icon_youtube-sign_bw.png" />
-          </div>
+          <ul class="social">
+            <li><img src="img/icon_twitter-sign_bw.png" /></li>
+            <li><img src="img/icon_facebook-sign_bw.png" /></li>
+            <li><img src="img/icon_instagram-sign_bw.png" /></li>
+            <li><img src="img/icon_youtube-sign_bw.png" /></li>
+          </ul>
           <div class="right-items">
-            <a href="index.html">
+            <a href="#">
               Home
             </a>
             <a href="about.html">
@@ -53,7 +142,7 @@
             <a href="events.html">
               Events
             </a>
-            <a href="#">
+            <a href="community.html">
               Community
             </a>
             <a href="sponsors.html">
@@ -67,22 +156,18 @@
     <div class="container">
       <div class="crow">
         <div class="content">
-          <span class="logo">UPStage.LA - Digital Media and Technology</span>
-          <h2>Giving Back</h2>
-          <p class="extra-padding">
-            STAGE UP events benefit at risk youth in our community. Through our partnerships with three impactful organizations we have made substantial impact in the lives of children of our future.
+          <p>
+            <img src="img/Info Txt Page 1.png" />
           </p>
-          <ul class="all-caps">
-            <li class="extra-padding">South Central Scholars</li>
-            <li class="extra-padding">International Trade Education Programs</li>
-            <li class="extra-padding">Los Angeles Leadership Academy</li>
-          </ul>
-          <p class="extra-padding">
-            <b>All profits from our events are donated to the above programs.</b>
+          <a class="book-button" href="#">
+            Book Tickets
+          </a>
+          <p>
+            <img src="img/Logo page 1.png" />
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/foundation/js/foundation.min.js"></script>

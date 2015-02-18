@@ -320,14 +320,29 @@ $bar-height: 50px;
     overflow: hidden;
 }
 
-.order {
-    .fonts {
+@mixin fonts() {
+    p, a {
         font: rem-calc(16px) $font-stack;
         font-weight: 5;
         text-transform: uppercase;
         letter-spacing: 4px;
     }
-    
+}
+
+.fonts {
+    font: rem-calc(16px) $font-stack;
+    font-weight: 5;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.about {
+    @media #{$medium-up} {
+        @include fonts();
+    }
+}
+
+.order {
     a {
         @extend .fonts;
         color: black;
@@ -348,7 +363,6 @@ $bar-height: 50px;
             padding: 10px 0;
             
             text-transform: uppercase;
-            font: rem-calc($schedule-font-size) $font-stack;
             
             $link-color: rgb(78, 16, 9);
             
@@ -361,6 +375,10 @@ $bar-height: 50px;
                 
                 &.active:after {
                     content: " -";
+                    
+                    @media #{$small-only} {
+                        content: "";
+                    }
                 }
             }
             
