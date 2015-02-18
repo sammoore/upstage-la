@@ -29,6 +29,15 @@ h2 {
     letter-spacing: rem-calc(4);
 }
 
+@mixin fonts() {
+    color: white;
+    font: rem-calc($nav-font-size) $font-stack;
+    letter-spacing: rem-calc(3);
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 100;
+}
+
 @mixin disable_background_events() {
     pointer-events: none;
     
@@ -79,6 +88,303 @@ h2 {
     }
 }
 
+.container {
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+    
+        width: (1440px);
+        height: (800px);
+    
+        margin-top: -$nav-margin;
+    
+        background: transparent url("../img/maxresdefault.png") top right no-repeat;
+        overflow: visible;
+        
+        @media #{$small-only} {
+            width: 100%;
+            margin-top: $nav-height;
+//            margin-left: -33%;
+            background-size: 100% auto;
+        }
+        
+        @media #{$medium-up} {
+            width: 100%;
+//            margin-left: -33%;
+            background-size: 100% auto;
+        }
+        
+        @media #{$large-up} {
+            left: 30%;
+        }
+    }
+}
+
+$bar-height: 50px;
+
+.header {
+    margin: 0 auto $nav-margin auto;
+    
+    @media #{$large-up} {
+        margin: $nav-margin auto;
+    }
+}
+
+.bar {
+    height: $bar-height;
+    text-align: center;
+}
+
+.bar-white {
+    @extend .bar;
+    
+    @media #{$small-up} {
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+.bar-black {
+    @extend .bar;
+    
+    background-color: rgba(0, 0, 0, 1.0);
+    text-align: left;
+    
+    @mixin beforeAndAfter() {
+        content: "";
+        position: absolute;
+        
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 9600px;
+        background: rgba(0, 0, 0, 1.0);
+    }
+    
+    &::before {
+        @include beforeAndAfter();
+    };
+    
+    &::after {
+        @include beforeAndAfter();
+        left: 100%;
+    };
+}
+
+.list-bar {
+    a, a:visited, a:hover {
+        color: white;
+    }
+    
+    list-style: none;
+    float: left;
+        
+    li {
+        display: inline;
+    }
+}
+
+.social-menu {
+    height: $nav-height;
+    line-height: $nav-height;
+}
+
+.social {
+    @extend .list-bar;
+    
+    a, a:visited, a:hover {
+        color: black;
+    };
+    
+    float: left;
+    $icon-size: 40px;
+    
+    ul, div {
+        height: $nav-height;
+        padding: 0 0;
+    }
+    
+    img {
+        width: $icon-size;
+        height: $icon-size;
+    
+        margin: 0 5px;
+    }
+    
+    @media #{$small-only} {
+        text-align: left;
+    }
+    
+    @media #{$medium-up} {
+        text-align: left;
+    }
+}
+
+.nav {
+    @extend .list-bar;
+    @include fonts();
+    
+    &.hide-for-large-up {
+        a, a:visited, a:hover {
+            color: black;
+        }
+    }
+    
+    float: right;
+    
+    text-align: right;
+    
+    li {
+        display: block;
+        float: left;
+        height: 100%;
+        line-height: 100%;
+        padding: 15px;
+    }
+}
+
+.dropdown.button {
+    background-color: transparent;
+    color: white;
+    float: left;
+    
+    span {
+        color: white;
+    }
+    
+    &.hamburger {
+        color: transparent;
+        float: right;
+        
+        &::after {
+            background-image: none;
+            border: 0 solid transparent;
+            right: 0;
+            margin: 0;
+            border-style: none;
+        }
+    
+        & {
+            @include hamburger(16px, false, 0, 1px, 6px, $topbar-menu-icon-color, "", false);
+        }
+    }
+}
+
+.logo-row {
+    @media #{$small-only} {
+        margin-top: 80px;
+    }
+    
+    @media #{$medium-only} {
+        margin-top: 150px;
+    }
+    
+    @media #{$large-only} {
+        
+    }
+}
+
+.logo {
+    display: block;
+    margin: 10px 0;
+
+    // size / 1.5
+    width: 399px;
+    height: (399px / 2.16);
+    
+    @media #{$small-only} {
+        margin-top: 100px;
+        
+        // size / 1.5
+        width: 200px;
+        height: (200px / 2.16);
+    }
+    
+    @media #{$medium-only} {
+        width: 380px;
+        height: (380px / 2.16);
+    }
+    
+    @media #{$large-only} {
+        
+    }
+
+    background: transparent url("../img/Logo page 1.png") top left no-repeat;
+    background-size: contain;
+
+
+    // hide the text
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.order {
+    .fonts {
+        font: rem-calc(16px) $font-stack;
+        font-weight: 5;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+    }
+    
+    a {
+        @extend .fonts;
+        color: black;
+    }
+    
+    h2 {
+        @extend .fonts;
+        color: white;
+    }
+}
+
+.schedule {
+    ul {
+        margin-left: 0;
+        
+        li {
+            list-style: none;
+            padding: 10px 0;
+            
+            text-transform: uppercase;
+            font: rem-calc($schedule-font-size) $font-stack;
+            
+            $link-color: rgb(78, 16, 9);
+            
+            span.event-name {
+                color: rgb(33, 35, 37);
+                
+                &:before {
+                    content: "- ";
+                }
+                
+                &.active:after {
+                    content: " -";
+                }
+            }
+            
+            a {
+                color: $link-color;
+            }
+            
+            a:visited, a:hover {
+                color: lighten($link-color, 10%);
+            }
+        }
+    }
+}
+
+.all-caps {
+    text-transform: uppercase;
+}
+
+.extra-padding {
+    padding: 5px 0;
+}
+
+/*
+
 body {
     @include responsive_row_additions();
     margin: 0 auto;
@@ -113,42 +419,6 @@ body {
         
         &:hover {
             color: red;
-        }
-    }
-    
-    .social {
-        @include grid_column(12 - ($item-count * $column-width) - $left-gutter, $last_column: true);
-        
-        img {
-            background-color: rgba(255, 255, 255, 0.80);
-        }
-        
-        $icon-size: 40px;
-        
-        text-align: left;
-        padding: ($nav-height - $icon-size) / 2 0;
-        margin: 50px -15px;
-        
-        li {
-            list-style: none;
-            float: left;
-        }
-        
-        @media #{$medium-only} {
-            text-align: center;
-        }
-        
-        @media #{$large-up} {
-            @include grid_column(12 - ($item-count * $column-width) - $left-gutter);
-            text-align: center;
-            margin: 0;
-        }
-        
-        img {
-            width: $icon-size;
-            height: $icon-size;
-            
-            margin: 0 5px;
         }
     }
 
@@ -229,22 +499,6 @@ body {
     }
 }
 
-.logo {
-    display: block;
-    margin: 10px 0;
-
-    background: transparent url("../img/Logo page 1.png") top left no-repeat;
-    background-size: contain;
-    // size / 1.5
-    width: 399px;
-    height: 184px;
-
-    /* Hide the text */
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
 .schedule {
     ul {
         margin-left: 0;
@@ -288,6 +542,8 @@ body {
 .extra-padding {
     padding: 5px 0;
 }
+
+*/
 
 // Or selectively include components
 // @import
