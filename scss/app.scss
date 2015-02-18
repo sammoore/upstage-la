@@ -368,8 +368,6 @@ $bar-height: 50px;
             list-style: none;
             padding: 10px 0;
             
-            @include fonts();
-            
             $link-color: rgb(78, 16, 9);
             
             span.event-name {
@@ -399,10 +397,12 @@ $bar-height: 50px;
     }
 }
 
-.community, .sponsors {
-    @include fonts();
-    p, a, span {
-        line-height: rem-calc(30);
+.schedule, .community, .sponsors {
+    @media #{$medium-up} {
+        @include fonts();
+        p, a, span {
+            line-height: rem-calc(30);
+        }
     }
 }
 
