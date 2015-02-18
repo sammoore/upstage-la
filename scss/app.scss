@@ -321,7 +321,7 @@ $bar-height: 50px;
 }
 
 @mixin fonts() {
-    p, a {
+    p, a, span {
         font: rem-calc(16px) $font-stack;
         font-weight: 5;
         text-transform: uppercase;
@@ -337,8 +337,14 @@ $bar-height: 50px;
 }
 
 .about {
+    @media #{$small-up} {
+        p, a { text-align: justify; };
+    }
+    
     @media #{$medium-up} {
         @include fonts();
+        
+        p, a { line-height: rem-calc(30) };
     }
 }
 
@@ -362,7 +368,7 @@ $bar-height: 50px;
             list-style: none;
             padding: 10px 0;
             
-            text-transform: uppercase;
+            @include fonts();
             
             $link-color: rgb(78, 16, 9);
             
@@ -390,6 +396,13 @@ $bar-height: 50px;
                 color: lighten($link-color, 10%);
             }
         }
+    }
+}
+
+.community, .sponsors {
+    @include fonts();
+    p, a, span {
+        line-height: rem-calc(30);
     }
 }
 
