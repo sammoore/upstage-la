@@ -401,6 +401,10 @@ $bar-height: 50px;
 }
 
 .schedule, .community, .sponsors {
+    p, a, span {
+        text-transform: uppercase;
+    }
+    
     @media #{$medium-up} {
         @include fonts();
         p, a, span {
