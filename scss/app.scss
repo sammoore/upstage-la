@@ -93,8 +93,7 @@ h2 {
     }
 }
 
-.container {
-    &::before {
+.container::before {
         content: "";
         position: absolute;
         z-index: -1;
@@ -103,27 +102,26 @@ h2 {
         width: (1280px);
         height: (800px);
     
-        margin-top: -$nav-margin;
+        margin-top: 0;
     
         background: transparent url("../img/maxresalternate.png") top right no-repeat;
         overflow: visible;
         
         @media #{$small-only} {
-            width: 100%;
-            margin-top: $nav-height;
-            background-size: 100% auto;
+            margin-top: $nav-margin;
         }
         
-        @media #{$medium-up} {
+        @media #{$small-up} {
             width: 100%;
             background-size: 100% auto;
         }
         
         @media #{$large-up} {
-            left: 30%;
+            margin-top: -$nav-margin;
+            width: 100%;
+            background-size: 100% auto;
         }
     }
-}
 
 $bar-height: 50px;
 
