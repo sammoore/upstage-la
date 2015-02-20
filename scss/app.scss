@@ -100,12 +100,12 @@ h2 {
         z-index: -1;
         top: 0;
     
-        width: (1440px);
+        width: (1280px);
         height: (800px);
     
         margin-top: -$nav-margin;
     
-        background: transparent url("../img/maxresdefault.png") top right no-repeat;
+        background: transparent url("../img/maxresalternate.png") top right no-repeat;
         overflow: visible;
         
         @media #{$small-only} {
